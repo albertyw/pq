@@ -42,4 +42,5 @@ def print_output(output):
     print(output, end='')
 
 
-format_parens(read_input())
+if __name__ == '__main__':
+    format_parens(read_input())
