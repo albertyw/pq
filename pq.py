@@ -34,9 +34,8 @@ def format_parens(data):
             indentation += 1
             output += newline(symbol, indentation)
             symbol = ''
-    if indentation != 0:
-        indentation = 0
-        output += newline('', indentation)
+    if output[-1] != "\n":
+        output += newline('', 0)
     return output
 
 
