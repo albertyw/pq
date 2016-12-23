@@ -11,31 +11,33 @@ def read_input():
 
 
 def newline(symbol, indentation):
-    print_output(symbol)
-    print_output("\n")
     spacing = ' ' * indentation * 2
-    print_output(spacing)
+    output = symbol + "\n" + spacing
+    print_output(output)
+    return output
 
 
 def format_parens(data):
+    output = ''
     indentation = 0
     symbol = ''
     for char in data:
         if char.strip() == '':
-            newline(symbol, indentation)
+            output += newline(symbol, indentation)
             symbol = ''
         if char in [')']:
             indentation -= 1
-            newline(symbol, indentation)
+            output += newline(symbol, indentation)
             symbol = ''
         symbol += char.strip()
         if char in ['(']:
             indentation += 1
-            newline(symbol, indentation)
+            output += newline(symbol, indentation)
             symbol = ''
     if indentation != 0:
         indentation = 0
-        newline('', indentation)
+        output += newline('', indentation)
+    return output
 
 
 def print_output(output):
